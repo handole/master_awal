@@ -1,12 +1,12 @@
 # master_awal
 API get json
-## Setup environtmen
+### Setup environtmen
 - virtualenv 
 
-## migration database
+### migration database
 - python manage.py makemigrations
 - python manage.py migrate
 
-## createsuperuser
+### createsuperuser
 - python manage.py createsuperuser
 
