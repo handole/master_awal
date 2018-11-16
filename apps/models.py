@@ -1,5 +1,6 @@
 import uuid
 import datetime
+from django.contrib.auth.models import User
 from django.utils.translation import gettext as _
 from django.db import models
 from mptt.models import MPTTModel, TreeForeignKey
@@ -38,29 +39,18 @@ class Dept(models.Model):
 	def __str__(self):
 		return self.nmdept
 
-class Fungsi(MPTTModel):
+class Fungsi(models.Model):
 	kdfungsi = models.CharField(max_length=2, verbose_name='Kode Fungsi')
-	parent = TreeForeignKey('self', on_delete=models.CASCADE, related_name='child', verbose_name='Kode SFungsi')
 	nmfungsi = models.CharField(max_length=30, verbose_name='Nama Fungsi')
 
-	class MPTTMeta:
-		order_insertion_by = ['nmfungsi']
 
-	def get_children(self):
-		parent =  self.parent.cleeaned_data.get('parent')
-		for obj in Fungsi.objects.all():
-			obj.kdfungsi, obj.parent, obj.nmfungsi = (0, 0, obj.parent)
-			obj.save()
-		Fungsi.tree.rebuild()
-		return parent
-		
 	def __str__(self):
 		return self.nmfungsi
 
 
-class Program(MPTTModel):
+class Program(models.Model):
 	kdfungsi = models.ForeignKey(Fungsi, on_delete=models.CASCADE, verbose_name='Kode Fungsi')
-	parent = TreeForeignKey('Fungsi', on_delete=models.CASCADE, related_name='prog_child', verbose_name='Kode SFungsi')
+	kdsfungsi = models.CharField(max_length=2, verbose_name='Kode SFungsi')
 	kdprogram = models.CharField(max_length=2, verbose_name='Kode Program')
 	nmprogram = models.CharField(max_length=45, verbose_name='Nama Program')
 	tahun = models.IntegerField(choices=YEAR_CHOICES, default=current_year, verbose_name='Tahun Program')
@@ -69,9 +59,9 @@ class Program(MPTTModel):
 	def __str__(self):
 		return self.nmprogram
 
-class Giat(MPTTModel):
+class Giat(models.Model):
 	kdfungsi = models.ForeignKey(Fungsi, on_delete=models.CASCADE, verbose_name='Kode Fungsi')
-	parent = TreeForeignKey('Fungsi', on_delete=models.CASCADE, related_name='giat_child', verbose_name='Kode SFungsi')
+	kdsfungsi = models.CharField(max_length=2, verbose_name='Kode SFungsi')
 	kdprogram = models.ForeignKey(Program, on_delete=models.CASCADE, verbose_name='Kode Program')
 	kdgiat = models.CharField(max_length=4, verbose_name='Kode Giat')
 	nmgiat = models.CharField(max_length=70, verbose_name='Nama Giat')
@@ -100,17 +90,17 @@ class Kotam(models.Model):
 	def __str__(self):
 		return self.nmkotama
 
-class Output(MPTTModel):
+class Output(models.Model):
 	kdfungsi = models.ForeignKey(Fungsi, on_delete=models.CASCADE, verbose_name='Output')
-	parent = TreeForeignKey('Fungsi', on_delete=models.CASCADE, related_name='out_child', verbose_name='Kode Sfungsi')
+	kdsfungsi = models.CharField(max_length=2, verbose_name='Kode SFungsi')
 	kdprogram = models.ForeignKey(Program, on_delete=models.CASCADE, verbose_name='Kode Program')
 	kdgiat = models.ForeignKey(Giat, on_delete=models.CASCADE, verbose_name='Kode Giat')
 	kdoutput = models.CharField(max_length=3, verbose_name='Kode Output')
 	kdoutput1 = TreeForeignKey('self', on_delete=models.CASCADE, max_length=2, verbose_name='Kode Output 1')
 	nmoutput = models.CharField(max_length=75, verbose_name='Nama Output')
 
-	class MPTTMeta:
-		order_insertion_by = ['nmoutput']
+	def __str__(self):
+		return self.nmoutput
 
 class Satkun(models.Model):
 	kdgiat = models.ForeignKey(Giat, on_delete=models.CASCADE, related_name='satkun_giat', verbose_name='Kode Giat')
@@ -158,6 +148,25 @@ class Tingkat(models.Model):
 	kdwasgiat = models.ForeignKey(Wasgiat, on_delete=models.CASCADE)
 
 
+class Kegiatan(MPTTModel):
+	kdkegiatan = models.CharField(max_length=4, verbose_name='Kode Kegiatan')
+	nmkegiatan = models.CharField(max_length=255, verbose_name='Nama Kegiatan')
+	keterangan = models.TextField()
+	budget = models.DecimalField(max_digits=2, decimal_places=2, verbose_name='Budget')
+	status = models.CharField(max_length=100, verbose_name='Status')
+	created_by = models.ForeignKey(User, on_delete=models.CASCADE, verbose_name='Created By')
+	parent_id = TreeForeignKey('self', on_delete=models.CASCADE, related_name='child', verbose_name='Child Id')
+
+	class MPTTMeta:
+		order_insertion_by = ['nmkegiatan']
+
+	def get_children(self):
+		parent =  self.parent.cleeaned_data.get('parent_id')
+		for obj in Kegiatan.objects.all():
+			obj.kdkegiatan, obj.nmkegiatan, obj.parent_id = (0, 0, obj.parent)
+			obj.save()
+		Kegiatan.tree.rebuild()
+		return parent
 
 
 # tambah tabel kegiatan

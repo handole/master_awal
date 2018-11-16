@@ -66,12 +66,12 @@ class AkunAdmin(admin.ModelAdmin):
 admin.site.register(Akun, AkunAdmin)
 
 class ProgramAdmin(admin.ModelAdmin):
-	list_display = ('kdfungsi', 'parent', 'kdprogram', 'nmprogram')
+	list_display = ('kdfungsi', 'kdsfungsi', 'kdprogram', 'nmprogram')
 	search_fields = ['kdfungsi', 'kdprogram', 'nmprogram']
 	list_filter = ('kdprogram', 'nmprogram')
 	fieldsets = (
 			('Section 1', {
-				'fields': ('kdfungsi', 'parent')
+				'fields': ('kdfungsi', 'kdsfungsi')
 				}),
 			('Section 2', {
 				'fields': ('kdprogram', 'nmprogram')
@@ -124,20 +124,26 @@ admin.site.register(Satkr, SatkrAdmin)
 class OutputAdmin(admin.ModelAdmin):
 	list_display = ('kdfungsi', 'kdprogram', 'kdgiat', 'kdoutput', 'nmoutput')
 	search_fields = ['nmoutput']
-	list_filter = ('nmoutput')
-admin.site.register(Output)
+	list_filter = ('nmoutput',)
+admin.site.register(Output, OutputAdmin)
 
 class SubsatkrAdmin(admin.ModelAdmin):
 	list_display = ('kddept', 'kdunit', 'kdkotama', 'kdsatkr', 'kdsubsatkr', 'nmsubsatkr')
 	search_fields = ['nmsubsatkr']
-	list_filter = ('nmsubsatkr')
-admin.site.register(Subsatkr)
+	list_filter = ('nmsubsatkr',)
+admin.site.register(Subsatkr, SubsatkrAdmin)
 
 class WasgiatAdmin(admin.ModelAdmin):
 	list_display = ('kdwasgiat', 'nmwasgiat')
 	search_fields = ['nmwasgiat']
-	list_filter = ('nmwasgiat')
-admin.site.register(Wasgiat)
+	list_filter = ('nmwasgiat',)
+admin.site.register(Wasgiat, WasgiatAdmin)
+
+class KegiatanAdmin(admin.ModelAdmin):
+	list_display = ('kdkegiatan', 'nmkegiatan', 'keterangan', 'budget', 'status', 'created_by', 'parent_id')
+	search_fields = ['nmkegiatan']
+	list_filter = ('nmkegiatan',)
+admin.site.register(Kegiatan, KegiatanAdmin)	
 
 admin.site.register(Bulan)
 
