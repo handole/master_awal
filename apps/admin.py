@@ -11,6 +11,20 @@ def get_column():
 	column = []
 	return column
 
+class DownloadXLS(widgets.AdminFileWidget):
+	id = None
+	template_name = 'widgets/download_excel.html'
+
+	def __init__(self, id, attrs=None):
+		self.id = id
+		super().__init__(attrs)
+
+	def get_context(self, name, value, attrs):
+		context = super().get_context(name, value, attrs)
+		print(self, name, value, attrs, self.id)
+		context['download_excel'], reverse('export', kwargs={'pk': self.id})
+		return context
+
 class AkunAdmin(admin.ModelAdmin):
 	list_display = ('kdakun', 'nmakun', 'kdjenbel', 'tahun')
 	search_fields = ['kdakun', 'nmakun', 'kdjenbel', 'tahun']
@@ -52,12 +66,12 @@ class AkunAdmin(admin.ModelAdmin):
 admin.site.register(Akun, AkunAdmin)
 
 class ProgramAdmin(admin.ModelAdmin):
-	list_display = ('kdfungsi', 'kdsfungsi', 'kdprogram', 'nmprogram')
+	list_display = ('kdfungsi', 'parent', 'kdprogram', 'nmprogram')
 	search_fields = ['kdfungsi', 'kdprogram', 'nmprogram']
 	list_filter = ('kdprogram', 'nmprogram')
 	fieldsets = (
 			('Section 1', {
-				'fields': ('kdfungsi', 'kdsfungsi')
+				'fields': ('kdfungsi', 'parent')
 				}),
 			('Section 2', {
 				'fields': ('kdprogram', 'nmprogram')
@@ -107,7 +121,29 @@ class SatkrAdmin(admin.ModelAdmin):
 	list_filter = ('kdsatkr', 'nmsatkr', 'kdkusatker')
 admin.site.register(Satkr, SatkrAdmin)
 
+class OutputAdmin(admin.ModelAdmin):
+	list_display = ('kdfungsi', 'kdprogram', 'kdgiat', 'kdoutput', 'nmoutput')
+	search_fields = ['nmoutput']
+	list_filter = ('nmoutput')
+admin.site.register(Output)
 
+class SubsatkrAdmin(admin.ModelAdmin):
+	list_display = ('kddept', 'kdunit', 'kdkotama', 'kdsatkr', 'kdsubsatkr', 'nmsubsatkr')
+	search_fields = ['nmsubsatkr']
+	list_filter = ('nmsubsatkr')
 admin.site.register(Subsatkr)
+
+class WasgiatAdmin(admin.ModelAdmin):
+	list_display = ('kdwasgiat', 'nmwasgiat')
+	search_fields = ['nmwasgiat']
+	list_filter = ('nmwasgiat')
 admin.site.register(Wasgiat)
+
 admin.site.register(Bulan)
+
+# https://stackoverflow.com/questions/51492206/how-can-i-add-a-link-to-download-a-file-in-a-django-admin-detail-page
+# https://impythonist.wordpress.com/2016/08/05/building-an-excel-file-dump-service-in-django/
+# https://xlsxwriter.readthedocs.io/example_django_simple.html
+# https://stackoverflow.com/questions/40160738/why-does-xlsxwriter-export-the-data-in-my-database-from-django-admin-to-excel-in
+
+# 
