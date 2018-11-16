@@ -140,7 +140,7 @@ class WasgiatAdmin(admin.ModelAdmin):
 admin.site.register(Wasgiat, WasgiatAdmin)
 
 class KegiatanAdmin(admin.ModelAdmin):
-	list_display = ('kdkegiatan', 'nmkegiatan', 'keterangan', 'budget', 'status', 'created_by', 'parent_id')
+	list_display = ('kdkegiatan', 'nmkegiatan', 'keterangan', 'budget', 'status', 'created_by', 'parent')
 	search_fields = ['nmkegiatan']
 	list_filter = ('nmkegiatan',)
 admin.site.register(Kegiatan, KegiatanAdmin)	

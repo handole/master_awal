@@ -155,15 +155,15 @@ class Kegiatan(MPTTModel):
 	budget = models.DecimalField(max_digits=2, decimal_places=2, verbose_name='Budget')
 	status = models.CharField(max_length=100, verbose_name='Status')
 	created_by = models.ForeignKey(User, on_delete=models.CASCADE, verbose_name='Created By')
-	parent_id = TreeForeignKey('self', on_delete=models.CASCADE, related_name='child', verbose_name='Child Id')
+	parent = TreeForeignKey('self', on_delete=models.CASCADE, related_name='child', verbose_name='Child Id')
 
 	class MPTTMeta:
 		order_insertion_by = ['nmkegiatan']
 
 	def get_children(self):
-		parent =  self.parent.cleeaned_data.get('parent_id')
+		parent =  self.parent.cleaned_data.get('parent')
 		for obj in Kegiatan.objects.all():
-			obj.kdkegiatan, obj.nmkegiatan, obj.parent_id = (0, 0, obj.parent)
+			obj.kdkegiatan, obj.nmkegiatan, obj.parent = (0, 0, obj.parent)
 			obj.save()
 		Kegiatan.tree.rebuild()
 		return parent
