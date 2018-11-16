@@ -33,16 +33,16 @@ CREATE TABLE `apps_akun`  (
 -- ----------------------------
 -- Records of apps_akun
 -- ----------------------------
-INSERT INTO `apps_akun` VALUES (1, '511111', 'Belanja Gaji Pokok PNS', '51', '2018-11-11');
-INSERT INTO `apps_akun` VALUES (2, '511119', 'Belanja Pembulatan Gaji PNS', '51', '2018-11-11');
-INSERT INTO `apps_akun` VALUES (3, '511121', 'Belanja Tunjangan Suami/Istri PNS', '51', '2018-11-11');
-INSERT INTO `apps_akun` VALUES (4, '511122', 'Belanja Tunjangan Anak PNS', '51', '2018-11-11');
-INSERT INTO `apps_akun` VALUES (5, '511123', 'Belanja Tunjangan Struktural PNS', '51', '2018-11-11');
-INSERT INTO `apps_akun` VALUES (6, '511124', 'Belanja Tunjangan Fungsional PNS', '51', '2018-11-11');
-INSERT INTO `apps_akun` VALUES (7, '511125', 'Belanja Tunjangan PPh PNS', '51', '2018-11-11');
-INSERT INTO `apps_akun` VALUES (8, '511126', 'Belanja Tunjangan Beras PNS', '51', '2018-11-11');
-INSERT INTO `apps_akun` VALUES (9, '511127', 'Belanja Tunjangan Kemahalan PNS', '51', '2018-11-11');
-INSERT INTO `apps_akun` VALUES (10, '511128', 'Belanja Tunjangan Lauk pauk PNS', '51', '2018-11-11');
+INSERT INTO `apps_akun` VALUES (1, '511111', 'Belanja Gaji Pokok PNS', '51', '2018');
+INSERT INTO `apps_akun` VALUES (2, '511119', 'Belanja Pembulatan Gaji PNS', '51', '2018');
+INSERT INTO `apps_akun` VALUES (3, '511121', 'Belanja Tunjangan Suami/Istri PNS', '51', '2018');
+INSERT INTO `apps_akun` VALUES (4, '511122', 'Belanja Tunjangan Anak PNS', '51', '2018');
+INSERT INTO `apps_akun` VALUES (5, '511123', 'Belanja Tunjangan Struktural PNS', '51', '2018');
+INSERT INTO `apps_akun` VALUES (6, '511124', 'Belanja Tunjangan Fungsional PNS', '51', '2018');
+INSERT INTO `apps_akun` VALUES (7, '511125', 'Belanja Tunjangan PPh PNS', '51', '2018');
+INSERT INTO `apps_akun` VALUES (8, '511126', 'Belanja Tunjangan Beras PNS', '51', '2018');
+INSERT INTO `apps_akun` VALUES (9, '511127', 'Belanja Tunjangan Kemahalan PNS', '51', '2018');
+INSERT INTO `apps_akun` VALUES (10, '511128', 'Belanja Tunjangan Lauk pauk PNS', '51', '2018');
 INSERT INTO `apps_akun` VALUES (11, '511129', 'Belanja Uang Makan PNS', '51', '2018-11-11');
 INSERT INTO `apps_akun` VALUES (12, '511131', 'Belanja Tunjangan Perbaikan Penghasilan PNS', '51', '2018');
 INSERT INTO `apps_akun` VALUES (13, '511132', 'Belanja Tunjangan Cacat PNS', '51', '2018');

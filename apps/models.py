@@ -47,11 +47,12 @@ class Fungsi(MPTTModel):
 		order_insertion_by = ['nmfungsi']
 
 	def get_children(self):
-		return self.parent.cleeaned_data.get('parent')
+		parent =  self.parent.cleeaned_data.get('parent')
 		for obj in Fungsi.objects.all():
 			obj.kdfungsi, obj.parent, obj.nmfungsi = (0, 0, obj.parent)
 			obj.save()
 		Fungsi.tree.rebuild()
+		return parent
 		
 	def __str__(self):
 		return self.nmfungsi
