@@ -1,9 +1,7 @@
 from django.urls import path
 from rest_framework.routers import DefaultRouter
-# from .views import giat_list, giat_detail, GiatViewSet
-from .apiviews import ( login,
-	UserCreate, AkunList, AkunDetail, DeptList, DeptDetail,  
-	ProgramList, ProgramDetail, GiatList, GiatDetail, UnitList, UnitDetail)
+from .views import *
+from .apiviews import *
 from rest_framework.authtoken import views
 
 # router = DefaultRouter()
@@ -13,6 +11,8 @@ urlpatterns = [
 	# path("login/", LoginView.as_view(), name='login'),
 	path("login/", login, name='login'),
 	path("users/", UserCreate.as_view(), name="user-create"),
+
+	path("home/", home, name="home"),
 
 	path("akun/", AkunList.as_view(), name="akun-list"),
 	path("akun/<int:id>/", AkunDetail.as_view(), name="akun-detail"),
@@ -24,10 +24,22 @@ urlpatterns = [
 	path("giat/<int:pk>/", GiatDetail.as_view(), name="giat-detail"),
 	path("unit/", UnitList.as_view(), name="unit-list"),
 	path("unit/<int:pk>/", UnitDetail.as_view(), name="unit-detail"),
-	# path("akun/")
-
-	# path("giat/", giat_list, name="giat"),
-	# path("giat/<int:id>", giat_detail, name="giat-detail"),
+	# path("export/", export_xls, name='export-xls'),
+	# path("")
+	path("exportakun/", export_akun, name='export-akun'),
+	path("exportbulan/", export_bulan, name='export-bulan'),
+	path("exportfungsi/", export_fungsi, name='export-fungsi'),
+	path("exportprogram/", export_program, name='export-program'),
+	path("exportgiat/", export_giat, name='export-giat'),
+	path("exportkegiatan/", export_kegiatan, name='export-kegiatan'),
+	path("exportkotam/", export_kotam, name='export-kotam'),
+	path("exportoutput/", export_output, name='export-output'),
+	path("exportdept/", export_dept, name='export-dept'),
+	path("exportsatkun/", export_satkun, name='export-satkun'),
+	path("exportsatkur/", export_satkur, name='export-satkur'),
+	path("exportsubsatkur/", export_subsatkr, name='export-subsatkur'),
+	path("exporttingkat/", export_tingkat, name='export-tingkat'),
+	path("exportunit/", export_unit, name='export-unit'),
 ]
 
-# urlpatterns += router.urlsx
+# urlpatterns += router.urlsx  http://indoxx1.club/munafik-2-2018/

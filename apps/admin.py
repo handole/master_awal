@@ -1,7 +1,9 @@
 from django.contrib import admin
-from django.http import HttpResponse
+from django.http import HttpResponse, HttpResponseRedirect
+from django.template.response import TemplateResponse
 from django.urls import reverse, path
 from django.utils.html import format_html
+# from django.core.urlresolvers import reverse
 from django.contrib.admin import widgets 
 from .models import *
 import xlsxwriter
@@ -77,6 +79,35 @@ class ProgramAdmin(admin.ModelAdmin):
 				'fields': ('kdprogram', 'nmprogram')
 				}),
 		)
+
+	def export_program(self, request, program_id, *args, **kwargs):
+		return self.proses_action(
+			request=request,
+			program_id=program_id,
+			action_title = 'Export Program'
+		)
+
+	def proses_action(self, request, program_id, action_title):
+		account = self.get_object(request, program_id)
+
+		# if request.method != 'POST':
+
+	# def get_urls(self):
+	# 	urls = super().get_urls()
+	# 	custom_urls = [
+	# 		path('program-export', self.views.export_xls, name='program-excel'),
+	# 	]		
+
+	# 	return custom_urls + urls
+
+	# def program_actions(self, obj):
+	# 	return format_html(
+	# 		'<a class="button" href="#">Export</a>',
+	# 		reverse('export-xls'),
+	# 	)
+	# program_actions.short_description = "Program Action"
+	# program_actions.allow_tags = True
+
 admin.site.register(Program, ProgramAdmin)
 
 class DeptAdmin(admin.ModelAdmin):
