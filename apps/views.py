@@ -7,7 +7,7 @@ from .models import *
 # Create your views here.
 def export_akun(request):
     response = HttpResponse(content_type='application/ms-excel')
-    response['Content-Disposition'] = 'attachment; filename="export-user.xlsx"'
+    response['Content-Disposition'] = 'attachment; filename="export-akun.xlsx"'
 
     wb = xlwt.Workbook(encoding='utf-8')
     ws = wb.add_sheet('Users')
@@ -36,7 +36,7 @@ def export_akun(request):
 
 def export_bulan(request):
     response = HttpResponse(content_type='application/ms-excel')
-    response['Content-Disposition'] = 'attachment; filename="export-user.xlsx"'
+    response['Content-Disposition'] = 'attachment; filename="export-bulan.xlsx"'
 
     wb = xlwt.Workbook(encoding='utf-8')
     ws = wb.add_sheet('Users')
@@ -65,7 +65,7 @@ def export_bulan(request):
 
 def export_dept(request):
     response = HttpResponse(content_type='application/ms-excel')
-    response['Content-Disposition'] = 'attachment; filename="export-user.xlsx"'
+    response['Content-Disposition'] = 'attachment; filename="export-dept.xlsx"'
 
     wb = xlwt.Workbook(encoding='utf-8')
     ws = wb.add_sheet('Users')
@@ -94,7 +94,7 @@ def export_dept(request):
 
 def export_fungsi(request):
     response = HttpResponse(content_type='application/ms-excel')
-    response['Content-Disposition'] = 'attachment; filename="export-user.xlsx"'
+    response['Content-Disposition'] = 'attachment; filename="export-fungsi.xlsx"'
 
     wb = xlwt.Workbook(encoding='utf-8')
     ws = wb.add_sheet('Users')
@@ -124,7 +124,7 @@ def export_fungsi(request):
 
 def export_program(request):
     response = HttpResponse(content_type='application/ms-excel')
-    response['Content-Disposition'] = 'attachment; filename="export-user.xlsx"'
+    response['Content-Disposition'] = 'attachment; filename="export-program.xlsx"'
 
     wb = xlwt.Workbook(encoding='utf-8')
     ws = wb.add_sheet('Users')
@@ -153,7 +153,7 @@ def export_program(request):
 
 def export_giat(request):
     response = HttpResponse(content_type='application/ms-excel')
-    response['Content-Disposition'] = 'attachment; filename="export-user.xlsx"'
+    response['Content-Disposition'] = 'attachment; filename="export-giat.xlsx"'
 
     wb = xlwt.Workbook(encoding='utf-8')
     ws = wb.add_sheet('Users')
@@ -182,7 +182,7 @@ def export_giat(request):
 
 def export_unit(request):
     response = HttpResponse(content_type='application/ms-excel')
-    response['Content-Disposition'] = 'attachment; filename="export-user.xlsx"'
+    response['Content-Disposition'] = 'attachment; filename="export-unit.xlsx"'
 
     wb = xlwt.Workbook(encoding='utf-8')
     ws = wb.add_sheet('Users')
@@ -211,7 +211,7 @@ def export_unit(request):
 
 def export_kotam(request):
     response = HttpResponse(content_type='application/ms-excel')
-    response['Content-Disposition'] = 'attachment; filename="export-user.xlsx"'
+    response['Content-Disposition'] = 'attachment; filename="export-kotam.xlsx"'
 
     wb = xlwt.Workbook(encoding='utf-8')
     ws = wb.add_sheet('Users')
@@ -240,7 +240,7 @@ def export_kotam(request):
 
 def export_output(request):
     response = HttpResponse(content_type='application/ms-excel')
-    response['Content-Disposition'] = 'attachment; filename="export-user.xlsx"'
+    response['Content-Disposition'] = 'attachment; filename="export-output.xlsx"'
 
     wb = xlwt.Workbook(encoding='utf-8')
     ws = wb.add_sheet('Users')
@@ -269,7 +269,7 @@ def export_output(request):
 
 def export_satkun(request):
     response = HttpResponse(content_type='application/ms-excel')
-    response['Content-Disposition'] = 'attachment; filename="export-user.xlsx"'
+    response['Content-Disposition'] = 'attachment; filename="export-satkun.xlsx"'
 
     wb = xlwt.Workbook(encoding='utf-8')
     ws = wb.add_sheet('Users')
@@ -298,7 +298,7 @@ def export_satkun(request):
 
 def export_satkur(request):
     response = HttpResponse(content_type='application/ms-excel')
-    response['Content-Disposition'] = 'attachment; filename="export-user.xlsx"'
+    response['Content-Disposition'] = 'attachment; filename="export-satkur.xlsx"'
 
     wb = xlwt.Workbook(encoding='utf-8')
     ws = wb.add_sheet('Users')
@@ -327,7 +327,7 @@ def export_satkur(request):
 
 def export_subsatkr(request):
     response = HttpResponse(content_type='application/ms-excel')
-    response['Content-Disposition'] = 'attachment; filename="export-user.xlsx"'
+    response['Content-Disposition'] = 'attachment; filename="export-subsatkr.xlsx"'
 
     wb = xlwt.Workbook(encoding='utf-8')
     ws = wb.add_sheet('Users')
@@ -356,7 +356,7 @@ def export_subsatkr(request):
 
 def export_wasgiat(request):
     response = HttpResponse(content_type='application/ms-excel')
-    response['Content-Disposition'] = 'attachment; filename="export-user.xlsx"'
+    response['Content-Disposition'] = 'attachment; filename="export-wasgiat.xlsx"'
 
     wb = xlwt.Workbook(encoding='utf-8')
     ws = wb.add_sheet('Users')
@@ -385,7 +385,7 @@ def export_wasgiat(request):
 
 def export_tingkat(request):
     response = HttpResponse(content_type='application/ms-excel')
-    response['Content-Disposition'] = 'attachment; filename="export-user.xlsx"'
+    response['Content-Disposition'] = 'attachment; filename="export-tingat.xlsx"'
 
     wb = xlwt.Workbook(encoding='utf-8')
     ws = wb.add_sheet('Users')
@@ -414,7 +414,7 @@ def export_tingkat(request):
 
 def export_kegiatan(request):
     response = HttpResponse(content_type='application/ms-excel')
-    response['Content-Disposition'] = 'attachment; filename="export-user.xlsx"'
+    response['Content-Disposition'] = 'attachment; filename="export-kegiatan.xlsx"'
 
     wb = xlwt.Workbook(encoding='utf-8')
     ws = wb.add_sheet('Users')
